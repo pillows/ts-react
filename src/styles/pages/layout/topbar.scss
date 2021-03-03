@@ -1,0 +1,17 @@
+@import "../../partials/variables";
+
+.top-bar-container {
+  background: $white;
+  color: $slate;
+  height: 60px;
+  z-index: 10;
+  width: 100%;
+  box-shadow: 0 4px 2px -2px rgba(109, 109, 109, 0.466);
+
+  .top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px;
+    width: calc(100% - 20px);
+  }
+}

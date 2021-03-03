@@ -1,0 +1,12 @@
+
+// *{
+//     background-color: #FEF7FF;
+// }
+.content-container {
+    background-color: #FEF7FF;
+    border-radius: 5px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    overflow: auto;
+    height: calc(100vh - 80px);
+}

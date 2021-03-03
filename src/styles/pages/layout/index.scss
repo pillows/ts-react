@@ -1,0 +1,15 @@
+@import "./sidebar.scss";
+@import "./topbar.scss";
+
+.layout-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.layout-aside {
+  width: calc(100% - 250px);
+  background-color: #fff;
+  height: 100vh;
+}
