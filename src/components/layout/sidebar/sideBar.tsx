@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import CompanyTitle from "./companyTitle";
 import SideBarItems from "./sideBarItems";
 import { NavLink } from "react-router-dom";

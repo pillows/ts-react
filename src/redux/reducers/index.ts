@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import globalReducer from "./appData";
+import authenticateReducer from "./authenticate";
 
-const RootReducer = combineReducers({ globalReducer });
+const RootReducer = combineReducers({ auth: authenticateReducer });
 
-export type RootStore = ReturnType<typeof RootReducer>;
+export type RootStoreI = ReturnType<typeof RootReducer>;
 
 export default RootReducer;

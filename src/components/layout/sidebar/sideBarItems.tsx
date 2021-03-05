@@ -1,6 +1,5 @@
 import React from "react";
 import PageviewIcon from '@material-ui/icons/Pageview';
-import CloseIcon from "@material-ui/icons/Close";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import EmailIcon from '@material-ui/icons/Email';

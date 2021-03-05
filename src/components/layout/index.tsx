@@ -1,8 +1,7 @@
 import React from "react";
 import SideBar from "./sidebar";
 import TopBar from "./topbar";
-import { StaticContext } from "react-router";
-import { RouteComponentProps, RouteProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 
 export interface RouteI extends RouteComponentProps {
   children : JSX.Element[] | JSX.Element
