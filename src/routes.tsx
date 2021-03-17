@@ -10,12 +10,20 @@ import Layout from "./components/layout";
 import Login from "./containers/login";
 import { RootStoreI } from "./redux/reducers";
 import PrivateRoute from "./components/privateRoute";
+import StorageHelper from "./services/storageHelper";
+
+const localStore = new StorageHelper.storageWorker();
 
 function Routes() {
-  const isLoggedIn = useSelector(
-    (state: RootStoreI) => state.auth.isLoggedIn
-  );
+  const isTokenPresent = localStore.get("tsToken");
 
+  const logStatus = (state: RootStoreI) => state.auth.isLoggedIn;
+
+  const isLoggedIn = useSelector(logStatus);
+
+  console.log({ isTokenPresent });
+
+  // const isLoggedIn = !!isTokenPresent;
 
   const protectedProps = {
     isAuthenticated: isLoggedIn,
@@ -51,7 +59,7 @@ function Routes() {
                     component={Page2}
                     {...protectedProps}
                   />
-                  <PrivateRoute  component={NotFound} {...protectedProps} />
+                  <PrivateRoute component={NotFound} {...protectedProps} />
                 </Switch>
               </Layout>
             )}

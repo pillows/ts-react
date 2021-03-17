@@ -14,20 +14,29 @@ import { authenticate, validateError } from "../../redux/actions/authenticate";
 import TextField from "@material-ui/core/TextField";
 import MuiAlert from "@material-ui/lab/Alert";
 
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-  },  
+  },
   media: {
     height: 140,
   },
 });
 
+type locationI = {
+  state: {
+    from: {
+      pathname: string;
+    };
+  };
+};
+
 function Login() {
   const classes = useStyles();
   const dispatch = useDispatch();
   let history = useHistory();
-  let location = useLocation();
+  let location: locationI = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,16 +56,17 @@ function Login() {
     (state: RootStoreI) => state.auth
   );
 
+  const takeToTheDashboard = () => {
+    let from = { pathname: "/dashboard" };
+    if (location.state && location.state.from.pathname !== "/") {
+      from = location.state.from;
+    }
+    history.replace(from);
+  };
+
   useEffect(() => {
     if (isLoggedIn) {
-      // let from = '';
-      // if(location.state && location.state.from) {
-      //   from = location.state.from
-      // }
-      let { from }: any = location.state || {
-        from: "/dashboard",
-      };
-      history.replace(from);
+      takeToTheDashboard();
     }
   }, [isLoggedIn]);
 

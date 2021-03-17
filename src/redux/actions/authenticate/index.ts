@@ -6,28 +6,8 @@ import {
   LOG_IN_FAIL,
   LOG_OUT,
 } from "./authenticateTypes";
-
-// import axios from "axios";
-
-// export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
-//   try {
-//     dispatch({
-//       type: POKEMON_LOADING
-//     })
-
-//     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-
-//     dispatch({
-//       type: POKEMON_SUCCESS,
-//       payload: res.data
-//     })
-
-//   } catch(e) {
-//     dispatch({
-//       type: POKEMON_FAIL
-//     })
-//   }
-// };
+import StorageHelper from "../../../services/storageHelper";
+const localStore = new StorageHelper.storageWorker();
 
 export const authenticate = (email: string) => (
   dispatch: Dispatch<AuthenticateDispatchTypes>
@@ -35,6 +15,7 @@ export const authenticate = (email: string) => (
   try {
     dispatch({ type: LOG_IN_LOADING });
     setTimeout(() => {
+      localStore.add("tsToken", "tokenFromApi");
       dispatch({
         type: LOG_IN_SUCCESS,
         payload: { name: email },
@@ -58,6 +39,7 @@ export const validateError = (message: string) => (
 };
 
 export const logOut = () => (dispatch: Dispatch<AuthenticateDispatchTypes>) => {
+  localStore.remove("tsToken");
   dispatch({
     type: LOG_OUT,
   });
